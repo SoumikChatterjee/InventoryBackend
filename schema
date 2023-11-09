@@ -1,0 +1,49 @@
+User collection: [{ 
+  _id: ObjectId(), 
+  name: "John Doe", 
+  email: "john.doe@email.com", 
+  password: "hashedPassword123", 
+  role: "admin", 
+}]
+
+Product collection: [{ 
+  _id: ObjectId(), 
+  name: "Product name", 
+  description: "Product description", 
+  SKU: "123456", 
+  category: "Category", 
+  manufacturer: "Manufacturer", 
+  price: 9.99, 
+  quantity: 100,
+  sold:10 
+  images: ["image1.jpg", "image2.jpg"], 
+}]
+
+
+Sales Order collection: [
+  { 
+    _id: ObjectId(), 
+    userType: "customer/supplier"
+    orderDate: "2022-05-15", 
+    Deliverydate: "2022-05-15",  
+    person: 
+    { 
+      name: "Customer name", 
+      email: "customer@email.com", 
+      address: "Customer address", 
+    }, 
+    items: 
+    [ 
+      { 
+        product_id: ObjectId(), 
+        quantity: 3, 
+        price: 14.99, 
+      }, 
+      { 
+        product_id: ObjectId(), 
+        quantity: 2, 
+        price: 12.99, 
+      } 
+    ], 
+  status: "Pending", 
+}]
