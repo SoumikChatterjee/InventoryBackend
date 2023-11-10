@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "NPN36/iBbdqcfP583L26a5DHAPwPW3eNYsx/F55zd5ktKtihyBBfY3MEL6jQ929GZBl5ZJPZ34LJDMwVv88cVw==",
+  "dgSpecHash": "RqZFBg87vXM6FnQNOXoqc6KUvXaWztD0JRwd4IYKaYf7LwlSSNJ1G5dbEf0us+4GLI5KWL0SxcshXTaoZyCMyQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\SOCHAT0\\Desktop\\ngdotnet\\Api\\InventoryManagement\\InventoryManagement\\InventoryManagement.csproj",
+  "projectFilePath": "C:\\Users\\SOCHAT0\\Desktop\\Capstone Project\\Api\\InventoryManagement\\InventoryManagement.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\SOCHAT0\\.nuget\\packages\\awssdk.core\\3.7.100.14\\awssdk.core.3.7.100.14.nupkg.sha512",
     "C:\\Users\\SOCHAT0\\.nuget\\packages\\awssdk.securitytoken\\3.7.100.14\\awssdk.securitytoken.3.7.100.14.nupkg.sha512",

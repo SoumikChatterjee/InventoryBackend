@@ -21,14 +21,13 @@ namespace InventoryManagement.Models
         public string Id { get; set; } = string.Empty;
 
         [BsonElement("userType")]
-        [BsonRepresentation(BsonType.String)]
-        public UserType UserType { get; set; }
+        public string UserType { get; set; }
 
         [BsonElement("orderDate")]
-        public DateTime OrderDate { get; set; }
+        public string OrderDate { get; set; }
 
         [BsonElement("deliveryDate")]
-        public DateTime DeliveryDate { get; set; }
+        public string DeliveryDate { get; set; }
 
         [BsonElement("person")]
         public Person Person { get; set; } = new Person();
@@ -37,7 +36,7 @@ namespace InventoryManagement.Models
         public List<ProductOrder> Items { get; set; } = new List<ProductOrder>();
 
         [BsonElement("status")]
-        public Status Status { get; set; }
+        public string Status { get; set; }
     }
 
     public class Person
@@ -55,8 +54,7 @@ namespace InventoryManagement.Models
     public class ProductOrder
     {
         [BsonElement("product_id")]
-        [BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; set; } = string.Empty;
+        public string ProductId { get; set; }
 
         [BsonElement("quantity")]
         public int Quantity { get; set; }

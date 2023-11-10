@@ -1,6 +1,11 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\InventoryManagement",
+    "\\InventoryManagement\\Controllers",
+    "\\InventoryManagement\\Models",
+    "\\InventoryManagement\\Service"
   ],
-  "PreviewInSolutionExplorer": false
+  "SelectedNode": "\\InventoryManagement\\Models\\Orders.cs",
+  "PreviewInSolutionExplorer": true
 }

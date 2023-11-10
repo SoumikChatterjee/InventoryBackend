@@ -35,6 +35,7 @@ namespace InventoryManagement.Service
 
         public void Update(string id, User user)
         {
+            user.Id=id;
             _users.ReplaceOne(student => student.Id == id, user);
         }
     }

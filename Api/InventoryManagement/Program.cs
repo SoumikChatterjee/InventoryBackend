@@ -31,6 +31,15 @@ builder.Services.AddScoped<IUserService>(provider =>
     new UserService(provider.GetService<IMongoClient>(),
                        provider.GetService<IDatabaseSettings>()));
 
+builder.Services.AddScoped<IProductService>(provider =>
+    new ProductService(provider.GetService<IMongoClient>(),
+                       provider.GetService<IDatabaseSettings>()));
+
+
+builder.Services.AddScoped<IOrderService>(provider =>
+    new OrderService(provider.GetService<IMongoClient>(),
+                       provider.GetService<IDatabaseSettings>()));
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
