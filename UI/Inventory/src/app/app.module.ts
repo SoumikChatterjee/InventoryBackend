@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProductsComponent } from './component/products/products.component';
@@ -13,6 +13,7 @@ import { SidebarModule } from 'primeng/sidebar';
 import {ButtonModule} from 'primeng/button';
 import { BarcodeComponent } from './component/barcode/barcode.component';
 import { ExportImportComponent } from './component/export-import/export-import.component';
+import {ReactiveFormsModule} from '@angular/forms'
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +28,9 @@ import { ExportImportComponent } from './component/export-import/export-import.c
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserModule, BrowserAnimationsModule, SidebarModule,ButtonModule
+    BrowserModule, BrowserAnimationsModule, SidebarModule,ButtonModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

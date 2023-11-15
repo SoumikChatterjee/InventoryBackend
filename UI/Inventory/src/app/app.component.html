@@ -61,7 +61,9 @@
 
         <div class="search">
           <label>
-            <input type="text" placeholder="Search Here">
+            <form [formGroup]="deltaForm">
+              <input type="text" placeholder="Search Here" formControlName="deltaControl">
+            </form>
             <i class="fa-solid fa-magnifying-glass"></i>
           </label>
         </div>

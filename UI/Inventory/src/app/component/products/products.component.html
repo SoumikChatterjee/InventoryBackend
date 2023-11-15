@@ -1,1 +1,13 @@
-<p>products works!</p>
+
+<div class="custom-container">
+    <div *ngFor="let p of filteredProducts" class="container-custom">
+        <div class="card" style="width: 18rem;">
+            <img [src]="p.images[0]" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{p.name}}</h5>
+                <p class="card-text">{{p.description}}</p>
+                <a class="btn btn-primary">Add</a>
+            </div>
+        </div>
+    </div>
+</div>
