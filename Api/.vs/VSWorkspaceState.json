@@ -3,9 +3,8 @@
     "",
     "\\InventoryManagement",
     "\\InventoryManagement\\Controllers",
-    "\\InventoryManagement\\Models",
     "\\InventoryManagement\\Service"
   ],
-  "SelectedNode": "\\InventoryManagement\\Models\\Orders.cs",
+  "SelectedNode": "\\InventoryManagement\\Controllers\\UsersController.cs",
   "PreviewInSolutionExplorer": true
 }

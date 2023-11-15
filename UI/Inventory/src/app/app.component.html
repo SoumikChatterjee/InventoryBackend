@@ -1,0 +1,82 @@
+<body>
+  <div class="container-fluid">
+    <div class="nav-custom">
+      <ul>
+        <li>
+          <a >
+            <span class="icon"><i class="fa-brands fa-apple"></i></span>
+            <span class="title">Brand Name</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="products">
+            <span class="icon"><i class="fa-solid fa-box"></i></span>
+            <span class="title">Products</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="barcode">
+            <span class="icon"><i class="fa-solid fa-barcode"></i></span>
+            <span class="title">Barcode Scanning</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="report">
+            <span class="icon"><i class="fa-solid fa-gauge"></i></span>
+            <span class="title">Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="supplier">
+            <span class="icon"><i class="fa-solid fa-truck-field"></i></span>
+            <span class="title">Suppliers</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="purchase-order">
+            <span class="icon"><i class="fa-solid fa-bag-shopping"></i></span>
+            <span class="title">Purchase Orders</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="sales-order">
+            <span class="icon"><i class="fa-solid fa-cart-shopping"></i> </span>
+            <span class="title">Sales Orders</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="export-import">
+            <span class="icon"><i class="fa-solid fa-chart-line"></i></span>
+            <span class="title">Export & Import Data</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <!-- main -->
+    <div class="main">
+      <div class="topbar">
+        <div class="toogle">
+          <i class="fa-solid fa-bars"></i> <!-- Menu icon -->
+        </div>
+
+        <div class="search">
+          <label>
+            <input type="text" placeholder="Search Here">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </label>
+        </div>
+        <!-- User Icon -->
+        <div class="user">
+          <i class="fa-solid fa-user"></i>
+        </div>
+      </div>
+
+      <!-- Cards -->
+      <div class="cardbox">
+        <router-outlet></router-outlet>
+      </div>
+
+    </div>
+  </div>
+
+</body>

@@ -11,6 +11,7 @@ namespace InventoryManagement.Controllers
     public class UsersController : ControllerBase
     {
 
+
         private IUserService UserService;
 
         public UsersController(IUserService UserService)

@@ -90,3 +90,10 @@ C:\Users\SOCHAT0\Desktop\Capstone Project\Api\InventoryManagement\obj\Debug\net7
 C:\Users\SOCHAT0\Desktop\Capstone Project\Api\InventoryManagement\obj\Debug\net7.0\InventoryManagement.csproj.CopyComplete
 C:\Users\SOCHAT0\Desktop\Capstone Project\Api\InventoryManagement\obj\Debug\net7.0\InventoryManagement.genruntimeconfig.cache
 C:\Users\SOCHAT0\Desktop\Capstone Project\Api\InventoryManagement\obj\Debug\net7.0\ref\InventoryManagement.dll
+C:\Users\SOCHAT0\Desktop\Capstone Project\Api\InventoryManagement\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\SOCHAT0\Desktop\Capstone Project\Api\InventoryManagement\bin\Debug\net7.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\SOCHAT0\Desktop\Capstone Project\Api\InventoryManagement\bin\Debug\net7.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\SOCHAT0\Desktop\Capstone Project\Api\InventoryManagement\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\SOCHAT0\Desktop\Capstone Project\Api\InventoryManagement\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\SOCHAT0\Desktop\Capstone Project\Api\InventoryManagement\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\SOCHAT0\Desktop\Capstone Project\Api\InventoryManagement\bin\Debug\net7.0\System.IdentityModel.Tokens.Jwt.dll
