@@ -7,6 +7,9 @@ import { PurchaseOrderComponent } from './component/purchase-order/purchase-orde
 import { ReportComponent } from './component/report/report.component';
 import { BarcodeComponent } from './component/barcode/barcode.component';
 import { ExportImportComponent } from './component/export-import/export-import.component';
+import { ProductDetailsComponent } from './component/product-details/product-details.component';
+import { EditProductComponent } from './component/edit-product/edit-product.component';
+import { AddProductComponent } from './component/add-product/add-product.component';
 
 const routes: Routes = [
   {
@@ -36,6 +39,18 @@ const routes: Routes = [
   {
     component:ExportImportComponent,
     path:"export-import"
+  },
+  {
+    component:ProductDetailsComponent,
+    path:"product-details/:id"
+  },
+  {
+    component: EditProductComponent,
+    path:"edit-product/:id"
+  },
+  {
+    component:AddProductComponent,
+    path:"add-product"
   }
 ];
 

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Route, Router } from '@angular/router';
 import { ActiveService } from 'src/app/service/active.service';
 import { ProductService } from 'src/app/service/product.service';
 
@@ -25,5 +26,15 @@ export class ProductsComponent {
       this.products=data;
     })
   }
+  deleteProduct(id: any) {
+    this.ps.deleteProductsById(id).subscribe((response) => {
+      this.products = this.products.filter(p => p.id !== id);
+      this.filteredProducts = this.filteredProducts.filter(p => p.id !== id);
+    }, (error) => {
+      this.products = this.products.filter(p => p.id !== id);
+      this.filteredProducts = this.filteredProducts.filter(p => p.id !== id);
+    });
+  }
+  
   
 }

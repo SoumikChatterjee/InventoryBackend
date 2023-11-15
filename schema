@@ -21,7 +21,7 @@ Product collection: [{
 
 
 Sales Order collection: [
-  { 
+{ 
     _id: ObjectId(), 
     userType: "customer/supplier"
     orderDate: "2022-05-15", 

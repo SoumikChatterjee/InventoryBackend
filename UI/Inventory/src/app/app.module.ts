@@ -13,7 +13,10 @@ import { SidebarModule } from 'primeng/sidebar';
 import {ButtonModule} from 'primeng/button';
 import { BarcodeComponent } from './component/barcode/barcode.component';
 import { ExportImportComponent } from './component/export-import/export-import.component';
-import {ReactiveFormsModule} from '@angular/forms'
+import {ReactiveFormsModule} from '@angular/forms';
+import { ProductDetailsComponent } from './component/product-details/product-details.component';
+import { EditProductComponent } from './component/edit-product/edit-product.component';
+import { AddProductComponent } from './component/add-product/add-product.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,6 +27,9 @@ import {ReactiveFormsModule} from '@angular/forms'
     ReportComponent,
     BarcodeComponent,
     ExportImportComponent,
+    ProductDetailsComponent,
+    EditProductComponent,
+    AddProductComponent,
   ],
   imports: [
     BrowserModule,

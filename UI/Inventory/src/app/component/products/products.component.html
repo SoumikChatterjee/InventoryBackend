@@ -1,4 +1,7 @@
-
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Product List</h2>
+    <a class="btn btn-primary" routerLink="/add-product">Add Product</a>
+</div>
 <div class="custom-container">
     <div *ngFor="let p of filteredProducts" class="container-custom">
         <div class="card" style="width: 18rem;">
@@ -6,7 +9,14 @@
             <div class="card-body">
                 <h5 class="card-title">{{p.name}}</h5>
                 <p class="card-text">{{p.description}}</p>
-                <a class="btn btn-primary">Add</a>
+                <div class="buttons">
+                    <a class="btn btn-primary" id="add">Add</a>
+                    <a class="btn btn-primary" id="view" routerLink="/product-details/{{p.id}}">view</a>
+                    <a class="btn btn-primary" id="view" routerLink="/edit-product/{{p.id}}">Edit</a>
+                    <a class="btn btn-primary" id="view" (click)="deleteProduct(p.id)">Delete</a>
+                </div>
+
+
             </div>
         </div>
     </div>

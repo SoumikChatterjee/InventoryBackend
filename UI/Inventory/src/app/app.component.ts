@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder,FormGroup} from '@angular/forms'
 import { ActiveService } from './service/active.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -11,13 +12,15 @@ export class AppComponent implements OnInit {
   list: NodeListOf<Element>| undefined;
 
   deltaForm:FormGroup;
-  constructor(private fb:FormBuilder,private as:ActiveService){
+  constructor(private fb:FormBuilder,private as:ActiveService, private router:Router){
     this.deltaForm=fb.group({
       deltaControl:''
     })
 
-    this.deltaForm.valueChanges.subscribe((value) => {     
-      this.as.mySubject.next(value.deltaControl);      
+    this.deltaForm.valueChanges.subscribe((value) => {         
+      this.as.mySubject.next(value.deltaControl); 
+      this.activeLink(document.querySelectorAll('li')[1] as Element);
+      router.navigate(['products']);       
     })
   }
 
@@ -44,10 +47,7 @@ export class AppComponent implements OnInit {
     
     this.list?.forEach((item) => {
       item.classList.remove('hovered');
-      console.log("for");
-      
     });
-    console.log("after for");
     
     selected.classList.add('hovered');
   }
