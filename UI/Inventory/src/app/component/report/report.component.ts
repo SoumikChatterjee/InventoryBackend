@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ChartModule } from 'primeng/chart';
 
 @Component({
   selector: 'app-report',

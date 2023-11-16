@@ -1,1 +1,11 @@
 <p>export-import works!</p>
+<form action="" [formGroup]="fg">
+    <label>Name of the file: </label>
+    <input placeholder="sample.csv" formControlName="fc">
+</form>
+
+<button (click)="exportCsv()">Save</button>
+
+<br>
+<!-- <input class="form-control" accept=".csv" id="csv" type="file" 
+  (change)="onFileSelect($event.target)" name="myfile"> -->

@@ -19,7 +19,6 @@ import { EditProductComponent } from './component/edit-product/edit-product.comp
 import { AddProductComponent } from './component/add-product/add-product.component';
 import { HomeComponent } from './component/home/home.component';
 import { ZXingScannerModule } from '@zxing/ngx-scanner';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,6 +41,7 @@ import { ZXingScannerModule } from '@zxing/ngx-scanner';
     HttpClientModule,
     ReactiveFormsModule,
     ZXingScannerModule,
+
     
   ],
   providers: [],
