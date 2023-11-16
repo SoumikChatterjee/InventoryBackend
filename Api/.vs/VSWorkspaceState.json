@@ -5,6 +5,6 @@
     "\\InventoryManagement\\Controllers",
     "\\InventoryManagement\\Service"
   ],
-  "SelectedNode": "\\InventoryManagement\\Controllers\\UsersController.cs",
+  "SelectedNode": "\\InventoryManagement\\Service\\ProductService.cs",
   "PreviewInSolutionExplorer": true
 }

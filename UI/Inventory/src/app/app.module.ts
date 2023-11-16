@@ -17,6 +17,9 @@ import {ReactiveFormsModule} from '@angular/forms';
 import { ProductDetailsComponent } from './component/product-details/product-details.component';
 import { EditProductComponent } from './component/edit-product/edit-product.component';
 import { AddProductComponent } from './component/add-product/add-product.component';
+import { HomeComponent } from './component/home/home.component';
+import { ZXingScannerModule } from '@zxing/ngx-scanner';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,13 +33,16 @@ import { AddProductComponent } from './component/add-product/add-product.compone
     ProductDetailsComponent,
     EditProductComponent,
     AddProductComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserModule, BrowserAnimationsModule, SidebarModule,ButtonModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ZXingScannerModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
