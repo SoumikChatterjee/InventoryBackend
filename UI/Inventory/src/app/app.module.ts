@@ -19,6 +19,7 @@ import { EditProductComponent } from './component/edit-product/edit-product.comp
 import { AddProductComponent } from './component/add-product/add-product.component';
 import { HomeComponent } from './component/home/home.component';
 import { ZXingScannerModule } from '@zxing/ngx-scanner';
+import { LoginComponent } from './component/login/login.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,6 +34,7 @@ import { ZXingScannerModule } from '@zxing/ngx-scanner';
     EditProductComponent,
     AddProductComponent,
     HomeComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

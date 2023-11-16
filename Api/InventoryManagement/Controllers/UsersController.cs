@@ -1,4 +1,5 @@
-﻿using InventoryManagement.Models;
+﻿using BCrypt.Net;
+using InventoryManagement.Models;
 using InventoryManagement.Service;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -41,12 +42,13 @@ namespace InventoryManagement.Controllers
 
         // POST api/<UsersController>
         [HttpPost]
-        public ActionResult<User> Post([FromBody] User User)
+        public async Task<IActionResult> Post([FromBody] User User)
         {
             User.Id = ObjectId.GenerateNewId().ToString();
-            UserService.Create(User);
+                
+             var newUser=await UserService.Create(User);
 
-            return CreatedAtAction(nameof(Get), new { id = User.Id }, User);
+            return Ok(newUser);
         }
 
         // PUT api/<UsersController>/5
@@ -81,5 +83,21 @@ namespace InventoryManagement.Controllers
             return Ok($"User with Id = {id} deleted");
         }
 
+        [HttpGet("login")]
+        public ActionResult<User> GetLogin(string email,string password)
+        {
+            var User = UserService.GetLogin(email);
+
+            if (User == null)
+            {
+                return NotFound($"Email Id not found");
+            }
+            else if (password != null && BCrypt.Net.BCrypt.Verify(password, User.Password))
+            {
+               return User;                
+            }
+            else
+            return NotFound($"Password is wrong");
+        }
     }
 }

@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "2HUR2c48jaI/VfcWV/7T8Ju2lXh4zTqVA8yjBsA+4hfHtkttJMC6XJ5wiPs0gw1ylkpJ0elU5vlVUGwP/sKHqA==",
+  "dgSpecHash": "3ZM5adlwIAF4p1rq4V+w09h+7rVCYc0TaA2s6+1Rn3bk6mIh0oLd+JDm3XU2RCa1IwxtkAtFJ69UFbwJFy7klw==",
   "success": true,
   "projectFilePath": "C:\\Users\\SOCHAT0\\Desktop\\Capstone Project\\Api\\InventoryManagement\\InventoryManagement.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\SOCHAT0\\.nuget\\packages\\awssdk.core\\3.7.100.14\\awssdk.core.3.7.100.14.nupkg.sha512",
     "C:\\Users\\SOCHAT0\\.nuget\\packages\\awssdk.securitytoken\\3.7.100.14\\awssdk.securitytoken.3.7.100.14.nupkg.sha512",
+    "C:\\Users\\SOCHAT0\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\SOCHAT0\\.nuget\\packages\\dnsclient\\1.6.1\\dnsclient.1.6.1.nupkg.sha512",
     "C:\\Users\\SOCHAT0\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\7.0.13\\microsoft.aspnetcore.authentication.jwtbearer.7.0.13.nupkg.sha512",
     "C:\\Users\\SOCHAT0\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.13\\microsoft.aspnetcore.openapi.7.0.13.nupkg.sha512",

@@ -12,9 +12,10 @@ namespace InventoryManagement.Service
             _users = database.GetCollection<User>(databaseSettings.UserCollectionName);
         }
 
-        public User Create(User user)
+        public async Task<User> Create(User user)
         {
-            _users.InsertOne(user);
+            user.Password=BCrypt.Net.BCrypt.HashPassword(user.Password);
+            await _users.InsertOneAsync(user);
             return user;
         }
 
@@ -37,6 +38,11 @@ namespace InventoryManagement.Service
         {
             user.Id=id;
             _users.ReplaceOne(student => student.Id == id, user);
+        }
+
+        public User GetLogin(string email)
+        {
+            return _users.Find(student => student.Email == email).FirstOrDefault();
         }
     }
 }

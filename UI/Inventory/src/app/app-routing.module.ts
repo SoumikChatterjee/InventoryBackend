@@ -11,6 +11,7 @@ import { ProductDetailsComponent } from './component/product-details/product-det
 import { EditProductComponent } from './component/edit-product/edit-product.component';
 import { AddProductComponent } from './component/add-product/add-product.component';
 import { HomeComponent } from './component/home/home.component';
+import { LoginComponent } from './component/login/login.component';
 
 const routes: Routes = [
 
@@ -58,6 +59,10 @@ const routes: Routes = [
         component: AddProductComponent,
         path: "add-product"
       },
+      {
+        component:LoginComponent,
+        path:"login"
+      }
     ]
   }
 ];

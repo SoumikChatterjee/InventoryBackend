@@ -9,6 +9,8 @@ import { ProductService } from 'src/app/service/product.service';
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent {
+
+  loading: boolean = true;
   products:Array<any>=[];
   filteredProducts:Array<any>=[];
   constructor(private ps:ProductService,private as:ActiveService){
@@ -22,11 +24,14 @@ export class ProductsComponent {
   {
     this.ps.getAllProducts().subscribe((data)=>{
       console.log(data);
+      this.loading = false;
       this.filteredProducts=data;
       this.products=data;
     })
   }
   deleteProduct(id: any) {
+    this.products = this.products.filter(p => p.id !== id);
+      this.filteredProducts = this.filteredProducts.filter(p => p.id !== id);
     this.ps.deleteProductsById(id).subscribe((response) => {
       this.products = this.products.filter(p => p.id !== id);
       this.filteredProducts = this.filteredProducts.filter(p => p.id !== id);

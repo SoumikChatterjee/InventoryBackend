@@ -97,3 +97,4 @@ C:\Users\SOCHAT0\Desktop\Capstone Project\Api\InventoryManagement\bin\Debug\net7
 C:\Users\SOCHAT0\Desktop\Capstone Project\Api\InventoryManagement\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\Users\SOCHAT0\Desktop\Capstone Project\Api\InventoryManagement\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\SOCHAT0\Desktop\Capstone Project\Api\InventoryManagement\bin\Debug\net7.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\SOCHAT0\Desktop\Capstone Project\Api\InventoryManagement\bin\Debug\net7.0\BCrypt.Net-Next.dll

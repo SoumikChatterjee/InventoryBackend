@@ -1,4 +1,5 @@
 ﻿using InventoryManagement.Models;
+using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace InventoryManagement.Service
 {
@@ -6,8 +7,10 @@ namespace InventoryManagement.Service
     {
         List<User> GetUsers();
         User Get(string id);
-        User Create(User user);
+        Task<User> Create(User user);
         void Update(string id,User user);
         void Delete(string id);
+
+        User GetLogin(string email);
     }
 }
