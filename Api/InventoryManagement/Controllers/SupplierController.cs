@@ -81,16 +81,40 @@ namespace InventoryManagement.Controllers
         }
 
         [HttpPatch("push")]
-        public ActionResult AddProduct(string id,string pid)
+        public ActionResult AddProduct(string name,string pid)
         {
-            var User=supplierService.Get(id);
+            var User=supplierService.GetSupplierByName(name);
             if(User == null)
             {
-                return NotFound($"Supplier with Id = {id} not found");
+                return NotFound($"Supplier with Name = {name} not found");
             }
-            supplierService.PushProduct(id,pid);
-            return Ok($"Supplier with Id = {id} updated");
+            supplierService.PushProduct(name,pid);
+            return Ok($"Supplier with Name= {name} updated");
 
+        }
+        [HttpPatch("pop")]
+        public ActionResult RemoveProduct(string name, string pid)
+        {
+            var User = supplierService.GetSupplierByName(name);
+            if (User == null)
+            {
+                return NotFound($"Supplier with Name = {name} not found");
+            }
+            supplierService.DeleteProduct(name, pid);
+            return Ok($"Supplier with Name= {name} updated");
+
+        }
+        [HttpGet("getByName")]
+        public ActionResult<Supplier> GetByName(string name)
+        {
+            var User = supplierService.GetSupplierByName(name);
+
+            if (User == null)
+            {
+                return NotFound($"User with Name= {name} not found");
+            }
+
+            return User;
         }
     }
 }

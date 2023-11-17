@@ -38,6 +38,9 @@ export class SupplierService {
   {
     return this.http.get<any[]>(this.url+"/"+id);
   }
+  getSupplierByName(name:string):Observable<any>{
+    return this.http.get<any[]>(`http://localhost:5242/api/Supplier/getByName?name=${name}`);
+  }
   deleteSuppliersById(id:any):Observable<any>{
     this.SupplierDataFlag=false;
     return this.http.delete(this.url+"/"+ id);
@@ -57,5 +60,16 @@ export class SupplierService {
         'Content-Type': 'application/json',
       },
     });
+  }
+
+  addProducts(name:string,pid:string):Observable<any>
+  {
+    this.SupplierDataFlag=false;
+    return this.http.patch(`http://localhost:5242/api/Supplier/push?name=${name}&pid=${pid}`, '');
+  }
+  deleteProducts(name:string,pid:string):Observable<any>
+  {
+    this.SupplierDataFlag=false;
+    return this.http.patch(`http://localhost:5242/api/Supplier/pop?name=${name}&pid=${pid}`, '');
   }
 }

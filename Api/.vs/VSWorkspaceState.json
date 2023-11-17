@@ -3,8 +3,9 @@
     "",
     "\\InventoryManagement",
     "\\InventoryManagement\\Controllers",
+    "\\InventoryManagement\\Properties",
     "\\InventoryManagement\\Service"
   ],
-  "SelectedNode": "\\InventoryManagement\\Controllers\\UsersController.cs",
+  "SelectedNode": "\\InventoryManagement\\Properties\\IDatabaseSettings.cs",
   "PreviewInSolutionExplorer": true
 }

@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { ProductService } from 'src/app/service/product.service';
 import { FormBuilder, FormGroup } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router';
+import { SupplierService } from 'src/app/service/supplier.service';
+import { mixinHasStickyInput } from '@angular/cdk/table';
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
@@ -11,7 +13,7 @@ export class AddProductComponent {
   editFormGroup: FormGroup
   data: any;
   id: any;
-  constructor(private ps: ProductService, private fb: FormBuilder, private ar: ActivatedRoute, private router:Router) {
+  constructor(private ps: ProductService, private fb: FormBuilder, private ar: ActivatedRoute, private router: Router, private ss: SupplierService) {
     this.editFormGroup = fb.group({
       name: '',
       description: '',
@@ -21,7 +23,7 @@ export class AddProductComponent {
       price: '',
       quantity: '',
       sold: '',
-      images:''
+      images: ''
     })
   }
   submit() {
@@ -39,9 +41,27 @@ export class AddProductComponent {
     }
     console.log(newProduct);
     this.ps.postProduct(newProduct).subscribe((response) => {
+      console.log("After posting");
+      
+      console.log(response);
+      
+      
       alert('Product added successfully.');
+      this.ss.getSupplierByName(newProduct.manufacturer).subscribe(res => {
+        this.ss.addProducts(newProduct.manufacturer, response.id).subscribe(r=>{});
+      }, (error) => {
+        this.ss.postSupplier({
+          id: '',
+          name: newProduct.manufacturer,
+          email: '-',
+          phone: '-',
+          products: [response.id]
+        }).subscribe(res => { });
+      })
       this.router.navigate(['products']);
     })
+
+    
 
   }
 }

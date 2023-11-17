@@ -39,13 +39,28 @@ namespace InventoryManagement.Service
             _supplier.ReplaceOne(student => student.Id == id, supplier);
         }
 
-        public void PushProduct(string id, string pid)
+        public void PushProduct(string name, string pid)
         {
             //Push pid inside product array of the supplier of id
-            var reqSupplier= _supplier.Find(student => student.Id == id).FirstOrDefault();
-            reqSupplier.Products.Add(pid);
+            var reqSupplier= _supplier.Find(student => student.Name == name).FirstOrDefault();
+            if (!reqSupplier.Products.Contains(pid))
+                reqSupplier.Products.Add(pid);
 
-            _supplier.ReplaceOne(student => student.Id == id, reqSupplier);
+            _supplier.ReplaceOne(student => student.Name == name, reqSupplier);
+        }
+
+        public Supplier GetSupplierByName(string name)
+        {
+            return _supplier.Find(supplier=>supplier.Name == name).FirstOrDefault();
+        }
+
+        public void DeleteProduct(string name, string pid)
+        {
+            var reqSupplier = _supplier.Find(student => student.Name == name).FirstOrDefault();
+            if(reqSupplier.Products.Contains(pid)){
+                reqSupplier.Products.Remove(pid);
+            }
+            _supplier.ReplaceOne(student => student.Name == name, reqSupplier);
         }
 
 

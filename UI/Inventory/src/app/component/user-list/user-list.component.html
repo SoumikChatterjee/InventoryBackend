@@ -16,7 +16,7 @@
                 <td>{{ user.name }}</td>
                 <td>{{ user.email }}</td>
                 <td>{{ user.role }}</td>
-                <td><i *ngIf="user.role!='Admin'" (click)="delete(user.id)" class="fa-solid fa-trash"></i></td>
+                <td><i *ngIf="user.role!='Admin'&&au.user.role=='Admin'" (click)="delete(user.id)" class="fa-solid fa-trash"></i></td>
             </tr>
         </tbody>
     </table>
