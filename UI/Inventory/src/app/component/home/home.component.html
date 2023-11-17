@@ -8,49 +8,49 @@
               <span class="title">4g0.5mm</span>
             </a>
           </li>
-          <li>
+          <li *ngIf="au.user.role == 'Admin'||au.user.role == 'Manager'||au.user.role == 'User'">
             <a routerLink="products">
               <span class="icon"><i class="fa-solid fa-box"></i></span>
               <span class="title">Products</span>
             </a>
           </li>
-          <li>
+          <li *ngIf="au.user.role == 'Admin'||au.user.role == 'Manager'">
             <a routerLink="barcode">
               <span class="icon"><i class="fa-solid fa-barcode"></i></span>
               <span class="title">Barcode Scanning</span>
             </a>
           </li>
-          <li>
+          <li *ngIf="au.user.role == 'Admin'||au.user.role == 'Manager'||au.user.role == 'User'">
             <a routerLink="report">
               <span class="icon"><i class="fa-solid fa-gauge"></i></span>
               <span class="title">Dashboard</span>
             </a>
           </li>
-          <li>
+          <li *ngIf="au.user.role == 'Admin'||au.user.role == 'Manager'||au.user.role == 'User'">
             <a routerLink="supplier">
               <span class="icon"><i class="fa-solid fa-truck-field"></i></span>
               <span class="title">Suppliers</span>
             </a>
           </li>
-          <li>
+          <li *ngIf="au.user.role == 'Admin'||au.user.role == 'Manager'||au.user.role == 'User'">
             <a routerLink="user-list">
               <span class="icon"><i class="fa-solid fa-user"></i></span>
               <span class="title">Users</span>
             </a>
           </li>
-          <li>
+          <li *ngIf="au.user.role == 'Admin'||au.user.role == 'Manager'||au.user.role == 'User'">
             <a routerLink="purchase-order">
               <span class="icon"><i class="fa-solid fa-bag-shopping"></i></span>
               <span class="title">Purchase Orders</span>
             </a>
           </li>
-          <li>
+          <li *ngIf="au.user.role == 'Admin'||au.user.role == 'Manager'||au.user.role == 'User'">
             <a routerLink="sales-order">
               <span class="icon"><i class="fa-solid fa-cart-shopping"></i> </span>
               <span class="title">Sales Orders</span>
             </a>
           </li>
-          <li>
+          <li *ngIf="au.user.role == 'Admin'||au.user.role == 'Manager'">
             <a routerLink="export-import">
               <span class="icon"><i class="fa-solid fa-chart-line"></i></span>
               <span class="title">Export & Import Data</span>
@@ -74,8 +74,10 @@
             </label>
           </div>
           <!-- User Icon -->
-          <div class="user" routerLink="login">
-            <i class="fa-solid fa-user"></i>
+          <div class="user" (click)="logout()" routerLink="/login">
+            <p>{{au.user.name}}</p>
+            <p>Logout</p>
+            <i class="fa-solid fa-right-from-bracket"></i>
           </div>
         </div>
   

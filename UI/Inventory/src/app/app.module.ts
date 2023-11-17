@@ -23,6 +23,7 @@ import { LoginComponent } from './component/login/login.component';
 import { RegisterComponent } from './component/register/register.component';
 import { UserListComponent } from './component/user-list/user-list.component';
 import { MatTableModule } from '@angular/material/table';
+import { EditSupplierComponent } from './component/edit-supplier/edit-supplier.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,6 +41,8 @@ import { MatTableModule } from '@angular/material/table';
     LoginComponent,
     RegisterComponent,
     UserListComponent,
+    EditSupplierComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -49,7 +52,6 @@ import { MatTableModule } from '@angular/material/table';
     ReactiveFormsModule,
     ZXingScannerModule,
     MatTableModule
-    
   ],
   providers: [],
   bootstrap: [AppComponent]

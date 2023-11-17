@@ -57,7 +57,7 @@ export class EditProductComponent {
       price: this.editFormGroup.get('price')?.value ?? 0,
       quantity: this.editFormGroup.get('quantity')?.value ?? 0,
       sold: this.editFormGroup.get('sold')?.value ?? 0,
-      images: [this.editFormGroup.get('images')?.value] ?? 0
+      images: this.editFormGroup.get('images')?.value ?? 0
     }
     console.log(newProduct);
     this.ps.putProductById(this.id,newProduct).subscribe((response) => {

@@ -99,5 +99,6 @@ namespace InventoryManagement.Controllers
             else
             return NotFound($"Password is wrong");
         }
+
     }
 }

@@ -184,18 +184,10 @@ body {
             }
         }
         .user{
-            cursor: pointer;
-            border: 1px solid #999;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            background-color: #999;
-            padding-left: 12px;
-            padding-top: 7px;
-            i{
-                
-                left:10px
-            }        
+            cursor: pointer;  
+            display: flex;
+            justify-content: center;
+            align-items: center;    
         }
 
     }

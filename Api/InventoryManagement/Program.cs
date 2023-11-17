@@ -52,6 +52,11 @@ builder.Services.AddScoped<IOrderService>(provider =>
                        provider.GetService<IDatabaseSettings>()));
 
 
+builder.Services.AddScoped<ISupplierService>(provider =>
+    new SupplierService(provider.GetService<IMongoClient>(),
+                       provider.GetService<IDatabaseSettings>()));
+
+
 
 var app = builder.Build();
 

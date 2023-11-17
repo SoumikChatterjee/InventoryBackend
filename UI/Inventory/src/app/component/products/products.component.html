@@ -58,16 +58,16 @@
 
     <div *ngFor="let p of filteredProducts" class="container-custom">
 
-        <div class="card" style="width: 18rem;">
+        <div [ngClass]="{'card': true, 'card-low-quantity': p.quantity < 10}" style="width: 18rem;">
             <img [src]="p.images[0]" class="card-img-top" alt="...">
             <div class="card-body">
-                <h5 class="card-title">{{p.name}}</h5>
+                <h3 class="card-title">{{p.name}}</h3>
                 <p class="card-text">{{p.description}}</p>
                 <div class="buttons">
-                    <a class="btn btn-primary" id="add">Add</a>
-                    <a class="btn btn-primary" id="view" routerLink="/product-details/{{p.id}}">view</a>
-                    <a class="btn btn-primary" id="view" routerLink="/edit-product/{{p.id}}">Edit</a>
-                    <a class="btn btn-primary" id="view" (click)="deleteProduct(p.id)">Delete</a>
+                    <a class="btn btn-primary" id="add" *ngIf="au.user.role=='Admin'||au.user.role=='Manager'">Add</a>
+                    <a class="btn btn-primary" id="view" *ngIf="au.user.role=='Admin'||au.user.role=='User'||au.user.role=='Admin'||au.user.role=='Manager'" routerLink="/product-details/{{p.id}}">view</a>
+                    <a class="btn btn-primary" id="view" *ngIf="au.user.role=='Admin'||au.user.role=='Manager'" routerLink="/edit-product/{{p.id}}">Edit</a>
+                    <a class="btn btn-primary" id="view" *ngIf="au.user.role=='Admin'" (click)="deleteProduct(p.id)">Delete</a>
                 </div>
             </div>
         </div>

@@ -1,1 +1,24 @@
-<p>supplier works!</p>
+<h1>Supplier Details</h1>
+<div class="container-fluid">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let supplier of suppliers">
+                <td>{{ supplier.id }}</td>
+                <td>{{ supplier.name }}</td>
+                <td>{{ supplier.email }}</td>
+                <td>{{ supplier.phone }}</td>
+                <td><button *ngIf="(au.user.role=='Admin'||au.user.role=='Manager')" routerLink="/edit-supplier/{{supplier.id}}">Edit Details</button></td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

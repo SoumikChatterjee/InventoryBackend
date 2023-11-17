@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UserService } from 'src/app/service/user.service';
 @Component({
   selector: 'app-register',
@@ -9,7 +10,7 @@ import { UserService } from 'src/app/service/user.service';
 export class RegisterComponent {
 
   fg: FormGroup
-  constructor(private fb: FormBuilder, private us: UserService) {
+  constructor(private fb: FormBuilder, private us: UserService,private router:Router) {
     this.fg = fb.group({
       name: '',
       email: '',
@@ -36,6 +37,8 @@ export class RegisterComponent {
 
         this.us.postUser(newUser).subscribe((response) => {
           alert('User added successfully.');
+          localStorage.setItem('user', JSON.stringify(response));
+          this.router.navigate(['/']); 
         })
 
       } else if (error.error === "Password is wrong") {

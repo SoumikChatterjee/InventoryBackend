@@ -37,6 +37,10 @@ namespace InventoryManagement.Service
         public void Update(string id, User user)
         {
             user.Id=id;
+            //I want the user with this id here.
+            var existingUser = _users.Find(user => user.Id == id).FirstOrDefault();
+            user.Password=existingUser.Password; 
+
             _users.ReplaceOne(student => student.Id == id, user);
         }
 
