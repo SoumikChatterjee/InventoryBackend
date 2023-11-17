@@ -15,8 +15,8 @@ export class LoginComponent {
     })
   }
   submit() {
-    console.log(this.fg.value.email);
-    console.log(this.fg.value.password);
+    // console.log(this.fg.value.email);
+    // console.log(this.fg.value.password);
     this.us.getUserByEmail(this.fg.value.email,this.fg.value.password).subscribe((res) => {
       alert("Succesfully Login");
 

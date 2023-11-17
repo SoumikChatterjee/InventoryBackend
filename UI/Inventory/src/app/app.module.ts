@@ -20,6 +20,9 @@ import { AddProductComponent } from './component/add-product/add-product.compone
 import { HomeComponent } from './component/home/home.component';
 import { ZXingScannerModule } from '@zxing/ngx-scanner';
 import { LoginComponent } from './component/login/login.component';
+import { RegisterComponent } from './component/register/register.component';
+import { UserListComponent } from './component/user-list/user-list.component';
+import { MatTableModule } from '@angular/material/table';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,6 +38,8 @@ import { LoginComponent } from './component/login/login.component';
     AddProductComponent,
     HomeComponent,
     LoginComponent,
+    RegisterComponent,
+    UserListComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,7 +48,7 @@ import { LoginComponent } from './component/login/login.component';
     HttpClientModule,
     ReactiveFormsModule,
     ZXingScannerModule,
-
+    MatTableModule
     
   ],
   providers: [],
