@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router';
 import { SupplierService } from 'src/app/service/supplier.service';
 import { mixinHasStickyInput } from '@angular/cdk/table';
+import { OrderService } from 'src/app/service/order.service';
+import { AuthService } from 'src/app/service/auth.service';
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
@@ -13,7 +15,7 @@ export class AddProductComponent {
   editFormGroup: FormGroup
   data: any;
   id: any;
-  constructor(private ps: ProductService, private fb: FormBuilder, private ar: ActivatedRoute, private router: Router, private ss: SupplierService) {
+  constructor(private ps: ProductService, private fb: FormBuilder, private ar: ActivatedRoute, private router: Router, private ss: SupplierService, private os:OrderService,private au:AuthService) {
     this.editFormGroup = fb.group({
       name: '',
       description: '',
@@ -23,7 +25,8 @@ export class AddProductComponent {
       price: '',
       quantity: '',
       sold: '',
-      images: ''
+      images: '',
+      priceAgreement:''
     })
   }
   submit() {
@@ -35,6 +38,7 @@ export class AddProductComponent {
       category: this.editFormGroup.get('category')?.value ?? '',
       manufacturer: this.editFormGroup.get('manufacturer')?.value ?? '',
       price: this.editFormGroup.get('price')?.value ?? 0,
+      priceAgreement: this.editFormGroup.get('priceAgreement')?.value ?? 0,
       quantity: this.editFormGroup.get('quantity')?.value ?? 0,
       sold: this.editFormGroup.get('sold')?.value ?? 0,
       images: [this.editFormGroup.get('images')?.value] ?? 0,
@@ -59,9 +63,17 @@ export class AddProductComponent {
         }).subscribe(res => { });
       })
       this.router.navigate(['products']);
+
+      const date=new Date();
+
+      this.os.postOrder({
+        id:'',
+        userEmail:"-",
+        userType:this.au.user.role,
+        orderDate:`${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`,
+        item:response.id,
+        quantity:response.quantity
+      }).subscribe(res=>{});
     })
-
-    
-
   }
 }

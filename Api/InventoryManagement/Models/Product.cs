@@ -24,6 +24,9 @@ namespace InventoryManagement.Models
         [BsonElement("price")]
         public double Price { get; set; }
 
+        [BsonElement("priceAgreement")]
+        public double PriceAgreement { get; set; }
+
         [BsonElement("quantity")]
         public int Quantity { get; set; }
 

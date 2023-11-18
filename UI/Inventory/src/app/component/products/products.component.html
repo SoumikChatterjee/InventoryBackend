@@ -64,7 +64,9 @@
                 <h3 class="card-title">{{p.name}}</h3>
                 <p class="card-text">{{p.description}}</p>
                 <div class="buttons">
-                    <a class="btn btn-primary" id="add" *ngIf="au.user.role=='Admin'||au.user.role=='Manager'">Add</a>
+                    <a class="btn btn-primary" id="add" *ngIf="au.user.role=='Admin'||au.user.role=='Manager'" (click)="order(p.id)" >Restock</a>
+                    <a class="btn btn-primary" (click)="deleteOrder(p.id)" id="add" *ngIf="au.user.role=='User'">-</a>
+                    <a class="btn btn-primary" (click)="order(p.id)" id="add" *ngIf="au.user.role=='User'">+</a>
                     <a class="btn btn-primary" id="view" *ngIf="au.user.role=='Admin'||au.user.role=='User'||au.user.role=='Admin'||au.user.role=='Manager'" routerLink="/product-details/{{p.id}}">view</a>
                     <a class="btn btn-primary" id="view" *ngIf="au.user.role=='Admin'||au.user.role=='Manager'" routerLink="/edit-product/{{p.id}}">Edit</a>
                     <a class="btn btn-primary" id="view" *ngIf="au.user.role=='Admin'" (click)="deleteProduct(p.id)">Delete</a>

@@ -2,12 +2,13 @@ import { Component } from '@angular/core';
 import { AuthService } from 'src/app/service/auth.service';
 import { OrderService } from 'src/app/service/order.service';
 import { ProductService } from 'src/app/service/product.service';
+
 @Component({
-  selector: 'app-sales-order',
-  templateUrl: './sales-order.component.html',
-  styleUrls: ['./sales-order.component.scss']
+  selector: 'app-orders',
+  templateUrl: './orders.component.html',
+  styleUrls: ['./orders.component.scss']
 })
-export class SalesOrderComponent {
+export class OrdersComponent {
 
   Orders: Array<any> = [];
   Products:Array<any>=[];
@@ -16,7 +17,7 @@ export class SalesOrderComponent {
     this.os.getAllOrders().subscribe(res => {
       this.Orders = res;
       this.Orders = this.Orders.filter((order) => {
-        if (order.userType == 'User' )
+        if (order.userType == 'User' && order.userEmail==au.user.email)
           return true;
         else
           return false;
@@ -27,16 +28,13 @@ export class SalesOrderComponent {
     })
   }
   getProductNameById(id: string) {
-
     let product=this.Products.filter((pr)=>{
       return pr.id===id
     })
     if(product[0]!=undefined)
     return product[0].name;
     else
-    {
-      return "-";
-    }
+    return "-"
   }
   getProductImgUrlById(id:string){
     let product=this.Products.filter((pr)=>{
@@ -44,10 +42,8 @@ export class SalesOrderComponent {
     })   
     if(product[0]!=undefined)
     return product[0].images[0];
-    else
-    {
-      return "...";
-    }
+  return "...";
   }
 
 }
+

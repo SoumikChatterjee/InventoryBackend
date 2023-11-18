@@ -22,7 +22,8 @@ export class EditProductComponent {
       price: '',
       quantity: '',
       sold: '',
-      images:''
+      images:'',
+      priceAgreement:''
     })
     this.ps.getProductsById(this.id).subscribe((res) => {
       this.data = res;
@@ -43,7 +44,8 @@ export class EditProductComponent {
       price: this.data.price,
       quantity: this.data.quantity,
       sold: this.data.sold,
-      images:this.data.images
+      images:this.data.images,
+      priceAgreement:this.data.priceAgreement
     });
   }
   submit() {
@@ -55,6 +57,7 @@ export class EditProductComponent {
       category: this.editFormGroup.get('category')?.value ?? '',
       manufacturer: this.editFormGroup.get('manufacturer')?.value ?? '',
       price: this.editFormGroup.get('price')?.value ?? 0,
+      priceAgreement: this.editFormGroup.get('priceAgreement')?.value ?? 0,
       quantity: this.editFormGroup.get('quantity')?.value ?? 0,
       sold: this.editFormGroup.get('sold')?.value ?? 0,
       images: this.editFormGroup.get('images')?.value ?? 0

@@ -24,6 +24,7 @@ import { RegisterComponent } from './component/register/register.component';
 import { UserListComponent } from './component/user-list/user-list.component';
 import { MatTableModule } from '@angular/material/table';
 import { EditSupplierComponent } from './component/edit-supplier/edit-supplier.component';
+import { OrdersComponent } from './component/orders/orders.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,6 +43,7 @@ import { EditSupplierComponent } from './component/edit-supplier/edit-supplier.c
     RegisterComponent,
     UserListComponent,
     EditSupplierComponent,
+    OrdersComponent,
 
   ],
   imports: [

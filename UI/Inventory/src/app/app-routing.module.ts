@@ -16,6 +16,8 @@ import { RegisterComponent } from './component/register/register.component';
 import { UserListComponent } from './component/user-list/user-list.component';
 import { AuthGuard } from './guards/auth.guard';
 import { EditSupplierComponent } from './component/edit-supplier/edit-supplier.component';
+import { OrderService } from './service/order.service';
+import { OrdersComponent } from './component/orders/orders.component';
 
 const routes: Routes = [
   {
@@ -89,6 +91,11 @@ const routes: Routes = [
       {
         component:EditSupplierComponent,
         path:'edit-supplier/:id',
+        canActivate: [AuthGuard]
+      },
+      {
+        component:OrdersComponent,
+        path:'orders',
         canActivate: [AuthGuard]
       }
     ]

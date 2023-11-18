@@ -20,23 +20,21 @@ namespace InventoryManagement.Models
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; } = string.Empty;
 
+        [BsonElement("userEmail")]
+        public string UserEmail { get; set; }
+
         [BsonElement("userType")]
         public string UserType { get; set; }
 
         [BsonElement("orderDate")]
         public string OrderDate { get; set; }
 
-        [BsonElement("deliveryDate")]
-        public string DeliveryDate { get; set; }
 
-        [BsonElement("person")]
-        public Person Person { get; set; } = new Person();
+        [BsonElement("item")]
+        public string Item { get; set; } = string.Empty;
 
-        [BsonElement("items")]
-        public List<ProductOrder> Items { get; set; } = new List<ProductOrder>();
-
-        [BsonElement("status")]
-        public string Status { get; set; }
+        [BsonElement("quantity")]
+        public int Quantity { get; set; }
     }
 
     public class Person

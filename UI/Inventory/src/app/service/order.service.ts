@@ -1,63 +1,61 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map, of } from 'rxjs';
-
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class OrderService {
 
-  private cachedUserData: any[] = [];
-  public UserDataFlag = false;
+  private cachedOrderData: any[] = [];
+  public OrderDataFlag = false;
+
+  url="http://localhost:5242/api/Order";
   constructor(private http:HttpClient) { }
-  url="http://localhost:5242/api/Users";
-  getAllUsers():Observable<any>
-  {    
-    if (this.UserDataFlag) {
+
+  getAllOrders():Observable<any>
+  {
+    if (this.OrderDataFlag) {
       // Return cached data if available
       console.log("Api not fetched");
-      return of(this.cachedUserData);
+      return of(this.cachedOrderData);
       
     } else {
       // Fetch data from API and cache it
       console.log("Api fetched");
       
-      this.UserDataFlag = true;
+      this.OrderDataFlag = true;
       return this.http.get<any[]>(this.url).pipe(
-        map((data) => {
-          this.cachedUserData = data;
+        map(data => {
+          this.cachedOrderData = data;
           return data;
         })
       );
     }
     
   }
-  getUsersById(id:any):Observable<any>
+  getOrdersById(id:any):Observable<any>
   {
     return this.http.get<any[]>(this.url+"/"+id);
   }
-  deleteUsersById(id:any):Observable<any>{
-    this.UserDataFlag=false;
+  deleteOrdersById(id:any):Observable<any>{
+    this.OrderDataFlag=false;
     return this.http.delete(this.url+"/"+ id);
   }
-  putUserById(id:any,record:any):Observable<any>{
-    this.UserDataFlag=false;
+  putOrderById(id:any,record:any):Observable<any>{
+    this.OrderDataFlag=false;
     return this.http.put(this.url+"/" + id,
     JSON.stringify(record),
     {
       headers: { 'Content-Type': 'application/json', },
     });
   }
-  postUser(record:any):Observable<any>{
-    this.UserDataFlag=false;
+  postOrder(record:any):Observable<any>{
+    this.OrderDataFlag=false;
     return this.http.post<any>(this.url, JSON.stringify(record), {
       headers: {
         'Content-Type': 'application/json',
       },
     });
   }
-  getUserByEmail(email:string,password:string):Observable<any>{
-    const url = `${this.url}/login?email=${email}&password=${password}`;
-    return this.http.get<any[]>(url);
-  }
+
 }
