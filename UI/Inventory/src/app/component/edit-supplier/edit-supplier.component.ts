@@ -41,6 +41,7 @@ export class EditSupplierComponent {
       name:this.fg.value.name,
       email:this.fg.value.email,
       phone:this.fg.value.phone,
+      products:this.supplier.products
     }
     this.ss.putSupplierById(this.id,newSupplier).subscribe(res=>{
       this.router.navigate(['/supplier'])

@@ -25,6 +25,8 @@ import { UserListComponent } from './component/user-list/user-list.component';
 import { MatTableModule } from '@angular/material/table';
 import { EditSupplierComponent } from './component/edit-supplier/edit-supplier.component';
 import { OrdersComponent } from './component/orders/orders.component';
+import { ChartModule } from 'primeng/chart';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,7 +55,8 @@ import { OrdersComponent } from './component/orders/orders.component';
     HttpClientModule,
     ReactiveFormsModule,
     ZXingScannerModule,
-    MatTableModule
+    MatTableModule,
+    ChartModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ProductService } from 'src/app/service/product.service';
 import { FormBuilder, FormGroup } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router';
+import { OrderService } from 'src/app/service/order.service';
 @Component({
   selector: 'app-edit-product',
   templateUrl: './edit-product.component.html',
@@ -11,7 +12,7 @@ export class EditProductComponent {
   editFormGroup: FormGroup
   data: any;
   id: any;
-  constructor(private ps: ProductService, private fb: FormBuilder, private ar: ActivatedRoute, private router:Router) {
+  constructor(private ps: ProductService, private fb: FormBuilder, private ar: ActivatedRoute, private router:Router, private os:OrderService) {
     this.id = ar.snapshot.params['id'];
     this.editFormGroup = fb.group({
       name: '',
@@ -60,7 +61,7 @@ export class EditProductComponent {
       priceAgreement: this.editFormGroup.get('priceAgreement')?.value ?? 0,
       quantity: this.editFormGroup.get('quantity')?.value ?? 0,
       sold: this.editFormGroup.get('sold')?.value ?? 0,
-      images: this.editFormGroup.get('images')?.value ?? 0
+      images: [this.editFormGroup.get('images')?.value] ?? 0
     }
     console.log(newProduct);
     this.ps.putProductById(this.id,newProduct).subscribe((response) => {

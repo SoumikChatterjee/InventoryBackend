@@ -46,9 +46,14 @@ export class ProductsComponent {
     this.os.getAllOrders().subscribe(o=>{
       orders=o;
       orders=orders.filter(order=>order.item===id)
-      console.log(orders);
+      console.log("Deleting product db");
       
-      this.os.deleteOrdersById(orders[0].id).subscribe(r=>{});
+      console.log(orders);
+      orders.forEach(order=>{
+
+        this.os.deleteOrdersById(order.id).subscribe(r=>{},(error)=>{});
+      })
+      
     })
 
     var pro=this.products.filter(p=>p.id===id);

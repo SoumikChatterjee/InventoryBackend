@@ -18,6 +18,8 @@ import { AuthGuard } from './guards/auth.guard';
 import { EditSupplierComponent } from './component/edit-supplier/edit-supplier.component';
 import { OrderService } from './service/order.service';
 import { OrdersComponent } from './component/orders/orders.component';
+import { RoleGuard } from './guards/role.guard';
+import { UserGuard } from './guards/user.guard';
 
 const routes: Routes = [
   {
@@ -41,62 +43,62 @@ const routes: Routes = [
       {
         component: SupplierComponent,
         path: "supplier",
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard, RoleGuard]
       },
       {
         component: SalesOrderComponent,
         path: "sales-order",
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard,RoleGuard]
       },
       {
         component: PurchaseOrderComponent,
         path: "purchase-order",
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard, RoleGuard]
       },
       {
         component: ReportComponent,
         path: "report",
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard, RoleGuard]
       },
       {
         component: BarcodeComponent,
         path: "barcode",
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard, RoleGuard]
       },
       {
         component: ExportImportComponent,
         path: "export-import",
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard, RoleGuard]
       },
       {
         component: ProductDetailsComponent,
         path: "product-details/:id",
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard, RoleGuard]
       },
       {
         component: EditProductComponent,
         path: "edit-product/:id",
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard, RoleGuard]
       },
       {
         component: AddProductComponent,
         path: "add-product",
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard, RoleGuard]
       },
       {
         component:UserListComponent,
         path:"user-list",
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard, RoleGuard]
       },
       {
         component:EditSupplierComponent,
         path:'edit-supplier/:id',
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard, RoleGuard]
       },
       {
         component:OrdersComponent,
         path:'orders',
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard, UserGuard]
       }
     ]
   }

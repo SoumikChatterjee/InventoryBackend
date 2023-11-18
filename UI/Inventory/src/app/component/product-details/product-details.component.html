@@ -7,5 +7,6 @@
 <p><b>Category:-</b>{{product.category}}</p>
 <p><b>Manufacturer:-</b>{{product.manufacturer}}</p>
 <p><b>Price:-</b>₹{{product.price}}</p>
+<p *ngIf="au.user.role=='Admin'||au.user.role=='Manager'"><b>PriceAgreement:-</b>₹{{product.priceAgreement}}</p>
 <p><b>Available Quantity:-</b>{{product.quantity}}</p>
 <p><b>Items Sold:-</b>{{product.sold}}</p>

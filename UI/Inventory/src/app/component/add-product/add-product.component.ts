@@ -15,7 +15,7 @@ export class AddProductComponent {
   editFormGroup: FormGroup
   data: any;
   id: any;
-  constructor(private ps: ProductService, private fb: FormBuilder, private ar: ActivatedRoute, private router: Router, private ss: SupplierService, private os:OrderService,private au:AuthService) {
+  constructor(private ps: ProductService, private fb: FormBuilder, private ar: ActivatedRoute, private router: Router, private ss: SupplierService, private os: OrderService, private au: AuthService) {
     this.editFormGroup = fb.group({
       name: '',
       description: '',
@@ -24,9 +24,8 @@ export class AddProductComponent {
       category: '',
       price: '',
       quantity: '',
-      sold: '',
       images: '',
-      priceAgreement:''
+      priceAgreement: ''
     })
   }
   submit() {
@@ -40,19 +39,19 @@ export class AddProductComponent {
       price: this.editFormGroup.get('price')?.value ?? 0,
       priceAgreement: this.editFormGroup.get('priceAgreement')?.value ?? 0,
       quantity: this.editFormGroup.get('quantity')?.value ?? 0,
-      sold: this.editFormGroup.get('sold')?.value ?? 0,
+      sold:0,
       images: [this.editFormGroup.get('images')?.value] ?? 0,
     }
     console.log(newProduct);
     this.ps.postProduct(newProduct).subscribe((response) => {
       console.log("After posting");
-      
+
       console.log(response);
-      
-      
+
+
       alert('Product added successfully.');
       this.ss.getSupplierByName(newProduct.manufacturer).subscribe(res => {
-        this.ss.addProducts(newProduct.manufacturer, response.id).subscribe(r=>{});
+        this.ss.addProducts(newProduct.manufacturer, response.id).subscribe(r => { });
       }, (error) => {
         this.ss.postSupplier({
           id: '',
@@ -64,16 +63,16 @@ export class AddProductComponent {
       })
       this.router.navigate(['products']);
 
-      const date=new Date();
+      const date = new Date();
 
       this.os.postOrder({
-        id:'',
-        userEmail:"-",
-        userType:this.au.user.role,
-        orderDate:`${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`,
-        item:response.id,
-        quantity:response.quantity
-      }).subscribe(res=>{});
+        id: '',
+        userEmail: "-",
+        userType: this.au.user.role,
+        orderDate: `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`,
+        item: response.id,
+        quantity: response.quantity
+      }).subscribe(res => { });
     })
   }
 }
