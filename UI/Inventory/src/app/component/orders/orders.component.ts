@@ -17,7 +17,7 @@ export class OrdersComponent {
     this.os.getAllOrders().subscribe(res => {
       this.Orders = res;
       this.Orders = this.Orders.filter((order) => {
-        if (order.userType == 'User' && order.userEmail==au.user.email)
+        if (order.userType == 'User' && order.userEmail==au.user.email && order.isPaid==true)
           return true;
         else
           return false;

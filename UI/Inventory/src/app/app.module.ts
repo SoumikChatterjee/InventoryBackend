@@ -26,6 +26,8 @@ import { MatTableModule } from '@angular/material/table';
 import { EditSupplierComponent } from './component/edit-supplier/edit-supplier.component';
 import { OrdersComponent } from './component/orders/orders.component';
 import { ChartModule } from 'primeng/chart';
+import { CartComponent } from './component/cart/cart.component';
+import { PaymentComponent } from './component/payment/payment.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +48,8 @@ import { ChartModule } from 'primeng/chart';
     UserListComponent,
     EditSupplierComponent,
     OrdersComponent,
+    CartComponent,
+    PaymentComponent,
 
   ],
   imports: [

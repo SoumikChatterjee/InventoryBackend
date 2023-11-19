@@ -15,6 +15,7 @@ export class ProductsComponent {
   loading: boolean = true;
   products:Array<any>=[];
   filteredProducts:Array<any>=[];
+isHovered: any;
   constructor(private ps:ProductService,private as:ActiveService, public au:AuthService, private ss:SupplierService, private os:OrderService){
 
     as.mySubject.subscribe((res)=>{
@@ -79,10 +80,13 @@ export class ProductsComponent {
   {
     alert("Item Added");
     let orders:Array<any>;
+
+    //Getting all user to check whether same product is present or not, if present we will just increase the counter.
     this.os.getAllOrders().subscribe(r=>{
       orders=r
       console.log(orders);
       
+      //After fetching, applying filter depending upon the user type/name
       orders=orders.filter(order=>{
        if(order.item===id){
         if((order.userType==='Admin'||order.userType==='Manager')&&(this.au.user.role==='Admin'||this.au.user.role==='Manager'))
@@ -91,7 +95,7 @@ export class ProductsComponent {
           
         }
         else if(order.userType==='User'&&this.au.user.role==='User'){
-          if(order.userEmail===this.au.user.email)
+          if(order.userEmail===this.au.user.email && order.isPaid===false)
           return true;
           else
           return false;
@@ -104,7 +108,6 @@ export class ProductsComponent {
        else
        return false;
       })
-      console.log(orders);
       
       if(orders.length===0)
       {        
@@ -115,7 +118,8 @@ export class ProductsComponent {
           userType:this.au.user.role,
           orderDate:`${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`,
           item:id,
-          quantity:1
+          quantity:1,
+          isPaid:false
         }).subscribe(res=>{})
       }
       else
@@ -127,20 +131,20 @@ export class ProductsComponent {
       // Updating product stock
       if(this.au.user.role==='User')
       {
-        
-        this.ps.getProductsById(id).subscribe(r=>{
-          r.quantity-=1;
-          r.sold+=1;
-          console.log(r);
+        //User should have paid then it should update
+        // this.ps.getProductsById(id).subscribe(r=>{
+        //   r.quantity-=1;
+        //   r.sold+=1;
+        //   console.log(r);
           
-          this.ps.putProductById(r.id,r).subscribe(r2=>{
-            if(r.quantity===9)
-            {
-              console.log("refreshed");              
-              this.refreshProducts();
-            }
-          });
-        })
+        //   this.ps.putProductById(r.id,r).subscribe(r2=>{
+        //     if(r.quantity===9)
+        //     {
+        //       console.log("refreshed");              
+        //       this.refreshProducts();
+        //     }
+        //   });
+        // })
       }
       else
       {
@@ -177,7 +181,7 @@ export class ProductsComponent {
           return true;
         }
         else if(order.userType==='User'&&this.au.user.role==='User'){
-          if(order.userEmail===this.au.user.email)
+          if(order.userEmail===this.au.user.email && order.isPaid===false)
           return true;
           else
           return false;

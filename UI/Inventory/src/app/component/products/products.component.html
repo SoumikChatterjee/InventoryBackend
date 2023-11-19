@@ -59,18 +59,18 @@
 
     <div *ngFor="let p of filteredProducts" class="container-custom">
 
-        <div [ngClass]="{'card': true, 'card-low-quantity': p.quantity < 10}" style="width: 18rem;">
+        <div [ngClass]="{'card': true, 'card-low-quantity': p.quantity < 10}" style="width: 18rem;" >
             <img [src]="p.images[0]" class="card-img-top" alt="...">
             <div class="card-body">
                 <h3 class="card-title">{{p.name}}</h3>
-                <p class="card-text">{{p.description}}</p>
+                <p class="card-text">{{p.description | slice:0:25}}...</p>
                 <div class="buttons">
                     <a class="btn btn-primary" id="add" *ngIf="au.user.role=='Admin'||au.user.role=='Manager'" (click)="order(p.id)" >Restock</a>
-                    <a class="btn btn-primary" (click)="deleteOrder(p.id)" id="add" *ngIf="au.user.role=='User'">-</a>
-                    <a class="btn btn-primary" (click)="order(p.id)" id="add" *ngIf="au.user.role=='User'">+</a>
-                    <a class="btn btn-primary" id="view" *ngIf="au.user.role=='Admin'||au.user.role=='User'||au.user.role=='Admin'||au.user.role=='Manager'" routerLink="/product-details/{{p.id}}">view</a>
-                    <a class="btn btn-primary" id="view" *ngIf="au.user.role=='Admin'||au.user.role=='Manager'" routerLink="/edit-product/{{p.id}}">Edit</a>
-                    <a class="btn btn-primary" id="view" *ngIf="au.user.role=='Admin'" (click)="deleteProduct(p.id)">Delete</a>
+                    <a class="btn " (click)="deleteOrder(p.id)" id="add" *ngIf="au.user.role=='User'"><i class="fa-solid fa-minus"></i></a>
+                    <a class="btn " (click)="order(p.id)" id="add" *ngIf="au.user.role=='User'"><i class="fa-solid fa-plus"></i></a>
+                    <a class="btn" id="view" *ngIf="au.user.role=='Admin'||au.user.role=='User'||au.user.role=='Admin'||au.user.role=='Manager'" routerLink="/product-details/{{p.id}}"><i class="fa-solid fa-eye"></i></a>
+                    <a class="btn " id="view" *ngIf="au.user.role=='Admin'||au.user.role=='Manager'" routerLink="/edit-product/{{p.id}}"><i class="fa-regular fa-pen-to-square"></i></a>
+                    <a class="btn " id="view" *ngIf="au.user.role=='Admin'" (click)="deleteProduct(p.id)"><i class="fa-solid fa-trash"></i></a>
                 </div>
             </div>
         </div>

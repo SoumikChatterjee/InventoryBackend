@@ -20,6 +20,8 @@ import { OrderService } from './service/order.service';
 import { OrdersComponent } from './component/orders/orders.component';
 import { RoleGuard } from './guards/role.guard';
 import { UserGuard } from './guards/user.guard';
+import { CartComponent } from './component/cart/cart.component';
+import { PaymentComponent } from './component/payment/payment.component';
 
 const routes: Routes = [
   {
@@ -73,7 +75,7 @@ const routes: Routes = [
       {
         component: ProductDetailsComponent,
         path: "product-details/:id",
-        canActivate: [AuthGuard, RoleGuard]
+        canActivate: [AuthGuard]
       },
       {
         component: EditProductComponent,
@@ -99,6 +101,16 @@ const routes: Routes = [
         component:OrdersComponent,
         path:'orders',
         canActivate: [AuthGuard, UserGuard]
+      },
+      {
+        component:CartComponent,
+        path:'cart',
+        canActivate:[AuthGuard,UserGuard]
+      },
+      {
+        component:PaymentComponent,
+        path:'payment',
+        canActivate:[AuthGuard,UserGuard]
       }
     ]
   }

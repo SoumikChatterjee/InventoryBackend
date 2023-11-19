@@ -35,6 +35,9 @@ namespace InventoryManagement.Models
 
         [BsonElement("quantity")]
         public int Quantity { get; set; }
+
+        [BsonElement("isPaid")]
+        public Boolean IsPaid { get; set; }=false;
     }
 
     public class Person

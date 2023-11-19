@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit{
     this.deltaForm.valueChanges.subscribe((value) => {         
       this.as.mySubject.next(value.deltaControl); 
       this.activeLink(document.querySelectorAll('li')[1] as Element);
-      router.navigate(['products']);       
+      router.navigate(['']);       
     })
   }
   ngAfterViewInit() {
