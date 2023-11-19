@@ -4,7 +4,7 @@
         <ul>
           <li>
             <a >
-              <span class="icon"><i class="fa-brands fa-apple"></i></span>
+              <span class="icon"><i style="font-size: 50px;" class="fa-brands fa-jedi-order"></i></span>
               <span class="title">4g0.5mm</span>
             </a>
           </li>
@@ -52,7 +52,7 @@
           </li>
           <li *ngIf="au.user.role == 'User'">
             <a routerLink="orders">
-              <span class="icon"><i class="fa-solid fa-cart-shopping"></i> </span>
+              <span class="icon"><i class="fa-solid fa-cart-plus"></i> </span>
               <span class="title">Orders</span>
             </a>
           </li>
@@ -69,6 +69,10 @@
             </a>
           </li>
         </ul>
+        <div (click)="logout()" class="logout">
+          <p>Logout</p>
+          <i class="fa-solid fa-right-from-bracket"></i>
+        </div>
       </div>
       <!-- main -->
       <div class="main">
@@ -86,10 +90,9 @@
             </label>
           </div>
           <!-- User Icon -->
-          <div class="user" (click)="logout()" routerLink="/login">
+          <div class="user" (click)="logout()">
+            <i class="fa-regular fa-user"></i>
             <p>{{au.user.name}}</p>
-            <p>Logout</p>
-            <i class="fa-solid fa-right-from-bracket"></i>
           </div>
         </div>
   

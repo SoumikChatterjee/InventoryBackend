@@ -1,4 +1,4 @@
-<div class="d-flex justify-content-between align-items-center mb-3">
+<div class="top-row">
     <h2 *ngIf="products.length>0">Product List</h2>
     <a class="btn btn-primary" routerLink="/add-product">Add Product</a>
 </div>
@@ -60,9 +60,14 @@
     <div *ngFor="let p of filteredProducts" class="container-custom">
 
         <div [ngClass]="{'card': true, 'card-low-quantity': p.quantity < 10}" style="width: 18rem;" >
-            <img [src]="p.images[0]" class="card-img-top" alt="...">
+            <div class="img-holder">
+                <img [src]="p.images[0]" class="card-img-top" alt="...">
+            </div>
             <div class="card-body">
-                <h3 class="card-title">{{p.name}}</h3>
+
+                <span class="card-title">{{p.name}}</span>
+
+
                 <p class="card-text">{{p.description | slice:0:25}}...</p>
                 <div class="buttons">
                     <a class="btn btn-primary" id="add" *ngIf="au.user.role=='Admin'||au.user.role=='Manager'" (click)="order(p.id)" >Restock</a>
