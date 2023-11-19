@@ -9,6 +9,7 @@ import { UserService } from 'src/app/service/user.service';
 })
 export class LoginComponent {
   fg: FormGroup
+  loginPending: boolean = false;
   constructor(private fb: FormBuilder, private us: UserService,private router:Router) {
     this.fg = fb.group({
       email: '',
@@ -16,6 +17,7 @@ export class LoginComponent {
     })
   }
   submit() {
+    this.loginPending = true;
     // console.log(this.fg.value.email);
     // console.log(this.fg.value.password);
     this.us.getUserByEmail(this.fg.value.email,this.fg.value.password).subscribe((res) => {
@@ -26,7 +28,7 @@ export class LoginComponent {
       console.log(error);
       
       alert(error.error);
-
+      this.loginPending = false;
     });
   }
 }

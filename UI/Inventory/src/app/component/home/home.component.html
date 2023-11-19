@@ -8,8 +8,8 @@
               <span class="title">4g0.5mm</span>
             </a>
           </li>
-          <li *ngIf="au.user.role == 'Admin'||au.user.role == 'Manager'||au.user.role == 'User'">
-            <a routerLink="products">
+          <li class="hovered" *ngIf="au.user.role == 'Admin'||au.user.role == 'Manager'||au.user.role == 'User'">
+            <a routerLink="">
               <span class="icon"><i class="fa-solid fa-box"></i></span>
               <span class="title">Products</span>
             </a>

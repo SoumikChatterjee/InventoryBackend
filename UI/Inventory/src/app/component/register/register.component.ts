@@ -10,6 +10,7 @@ import { UserService } from 'src/app/service/user.service';
 export class RegisterComponent {
 
   fg: FormGroup
+  loginPending: boolean = false;
   constructor(private fb: FormBuilder, private us: UserService,private router:Router) {
     this.fg = fb.group({
       name: '',
@@ -18,11 +19,20 @@ export class RegisterComponent {
       role: ''
     })
   }
+  ngOnInit()
+  {
+    this.fg.patchValue({
+      role:'User'
+    })
+  }
   submit() {
+    this.loginPending=true;
     console.log(this.fg.value);
     this.us.getUserByEmail(this.fg.value.email, this.fg.value.password).subscribe((res) => {
       alert("User with same email is present");
+      this.loginPending=false;
     }, (error) => {
+      this.loginPending=false;
       if (error.error === "Email Id not found") {
 
         //Register new user
@@ -39,10 +49,13 @@ export class RegisterComponent {
           alert('User added successfully.');
           localStorage.setItem('user', JSON.stringify(response));
           this.router.navigate(['/']); 
+        },(error)=>{
+          this.loginPending=false;
         })
 
       } else if (error.error === "Password is wrong") {
         alert("User with same email is present");
+        
       } else {
         console.log(error);
         alert("An error occurred");
