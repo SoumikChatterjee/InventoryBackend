@@ -59,12 +59,18 @@
 
     <div *ngFor="let p of filteredProducts" class="container-custom">
 
-        <div [ngClass]="{'card': true, 'card-low-quantity': p.quantity < 10}" style="width: 18rem;" >
+
+
+        <div [ngClass]="{'card': true}" style="width: 18rem;" >
             <div class="img-holder">
                 <img [src]="p.images[0]" class="card-img-top" alt="...">
             </div>
+            <div class="price-hover">
+                ₹ {{p.price}}
+            </div>
             <div class="card-body">
-
+                <div [ngClass]="{'lowstockalert':true,'card-low-quantity': p.quantity < 10}" >
+                    LOW STOCK <i class="fa-solid fa-triangle-exclamation"></i></div>
                 <span class="card-title">{{p.name}}</span>
 
 

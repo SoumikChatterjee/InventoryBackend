@@ -13,7 +13,6 @@ import { AuthService } from 'src/app/service/auth.service';
 })
 export class AddProductComponent {
   editFormGroup: FormGroup
-  data: any;
   id: any;
   constructor(private ps: ProductService, private fb: FormBuilder, private ar: ActivatedRoute, private router: Router, private ss: SupplierService, private os: OrderService, private au: AuthService) {
     this.editFormGroup = fb.group({

@@ -13,130 +13,125 @@ import { SupplierService } from 'src/app/service/supplier.service';
 })
 export class ProductsComponent {
   loading: boolean = true;
-  products:Array<any>=[];
-  filteredProducts:Array<any>=[];
-isHovered: any;
-  constructor(private ps:ProductService,private as:ActiveService, public au:AuthService, private ss:SupplierService, private os:OrderService){
+  products: Array<any> = [];
+  filteredProducts: Array<any> = [];
+  isHovered: any;
+  constructor(private ps: ProductService, private as: ActiveService, public au: AuthService, private ss: SupplierService, private os: OrderService) {
 
-    as.mySubject.subscribe((res)=>{
+    as.mySubject.subscribe((res) => {
       this.filteredProducts = this.products.filter((product) => {
         return product.name.toLowerCase().includes(res.toLowerCase());
       });
     })
   }
-  ngOnInit()
-  {
-    this.ps.getAllProducts().subscribe((data)=>{
+  ngOnInit() {
+    this.ps.getAllProducts().subscribe((data) => {
       console.log(data);
       this.loading = false;
-      this.filteredProducts=data;
-      this.products=data;
+      this.filteredProducts = data;
+      this.products = data;
     })
   }
-  refreshProducts()
-  {
-    this.ps.getAllProducts().subscribe((data)=>{
+  refreshProducts() {
+    this.ps.getAllProducts().subscribe((data) => {
       console.log(data);
       this.loading = false;
-      this.filteredProducts=data;
-      this.products=data;
+      this.filteredProducts = data;
+      this.products = data;
     })
   }
   deleteProduct(id: string) {
-    let orders:Array<any>;
-    this.os.getAllOrders().subscribe(o=>{
-      orders=o;
-      orders=orders.filter(order=>order.item===id)
+    let orders: Array<any>;
+    this.os.getAllOrders().subscribe(o => {
+      orders = o;
+      orders = orders.filter(order => order.item === id)
       console.log("Deleting product db");
-      
-      console.log(orders);
-      orders.forEach(order=>{
 
-        this.os.deleteOrdersById(order.id).subscribe(r=>{},(error)=>{});
+      console.log(orders);
+      orders.forEach(order => {
+
+        this.os.deleteOrdersById(order.id).subscribe(r => { }, (error) => { });
       })
-      
+
     })
 
-    var pro=this.products.filter(p=>p.id===id);
-    this.ss.deleteProducts(pro[0].manufacturer,id).subscribe(r=>{
-    },(error)=>{
-      this.ss.getSupplierByName(pro[0].manufacturer).subscribe(supplier=>{        
-        if(supplier.products.length===0)
-        {
-          this.ss.deleteSuppliersById(supplier.id).subscribe(r=>{},(error)=>{});
+    var pro = this.products.filter(p => p.id === id);
+    this.ss.deleteProducts(pro[0].manufacturer, id).subscribe(r => {
+    }, (error) => {
+      this.ss.getSupplierByName(pro[0].manufacturer).subscribe(supplier => {
+        if (supplier.products.length === 0) {
+          this.ss.deleteSuppliersById(supplier.id).subscribe(r => { }, (error) => { });
         }
-    });
+      });
     })
     this.products = this.products.filter(p => p.id !== id);
-      this.filteredProducts = this.filteredProducts.filter(p => p.id !== id);
+    this.filteredProducts = this.filteredProducts.filter(p => p.id !== id);
     this.ps.deleteProductsById(id).subscribe((response) => {
-      
+
     }, (error) => {
-            
+
     });
   }
 
-  order(id:string)
-  {
+  order(id: string) {
     alert("Item Added");
-    let orders:Array<any>;
+    let orders: Array<any>;
 
     //Getting all user to check whether same product is present or not, if present we will just increase the counter.
-    this.os.getAllOrders().subscribe(r=>{
-      orders=r
+    this.os.getAllOrders().subscribe(r => {
+      orders = r
       console.log(orders);
-      
+
       //After fetching, applying filter depending upon the user type/name
-      orders=orders.filter(order=>{
-       if(order.item===id){
-        if((order.userType==='Admin'||order.userType==='Manager')&&(this.au.user.role==='Admin'||this.au.user.role==='Manager'))
-        {
-          return true;
-          
-        }
-        else if(order.userType==='User'&&this.au.user.role==='User'){
-          if(order.userEmail===this.au.user.email && order.isPaid===false)
-          return true;
-          else
-          return false;
+      orders = orders.filter(order => {
+        if (order.item === id) {
+          if ((order.userType === 'Admin' || order.userType === 'Manager') && (this.au.user.role === 'Admin' || this.au.user.role === 'Manager')) {
+            const date = new Date();
+            if (order.orderDate === `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`)
+              return true;
+            else
+              return false;
+
+          }
+          else if (order.userType === 'User' && this.au.user.role === 'User') {
+            if (order.userEmail === this.au.user.email && order.isPaid === false)
+              return true;
+            else
+              return false;
+          }
+          else {
+            return false;
+          }
         }
         else
-        {
           return false;
-        }
-       }
-       else
-       return false;
       })
-      
-      if(orders.length===0)
-      {        
+
+      if (orders.length === 0) {
         const date = new Date();
         this.os.postOrder({
-          id:'',
-          userEmail:this.au.user.email,
-          userType:this.au.user.role,
-          orderDate:`${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`,
-          item:id,
-          quantity:1,
-          isPaid:false
-        }).subscribe(res=>{})
+          id: '',
+          userEmail: this.au.user.email,
+          userType: this.au.user.role,
+          orderDate: `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`,
+          item: id,
+          quantity: 1,
+          isPaid: false
+        }).subscribe(res => { })
       }
-      else
-      {
-        orders[0].quantity=orders[0].quantity+1;
-        this.os.putOrderById(orders[0].id,orders[0]).subscribe(r=>{});
+      else {
+        orders[0].quantity = orders[0].quantity + 1;
+        this.os.putOrderById(orders[0].id, orders[0]).subscribe(r => { });
       }
 
       // Updating product stock
-      if(this.au.user.role==='User')
-      {
+      if (this.au.user.role === 'User') {
         //User should have paid then it should update
         // this.ps.getProductsById(id).subscribe(r=>{
         //   r.quantity-=1;
         //   r.sold+=1;
         //   console.log(r);
-          
+
         //   this.ps.putProductById(r.id,r).subscribe(r2=>{
         //     if(r.quantity===9)
         //     {
@@ -146,83 +141,73 @@ isHovered: any;
         //   });
         // })
       }
-      else
-      {
-        this.ps.getProductsById(id).subscribe(r=>{
-          r.quantity+=1;
+      else {
+        this.ps.getProductsById(id).subscribe(r => {
+          r.quantity += 1;
           console.log(r);
 
-          this.ps.putProductById(r.id,r).subscribe(r2=>{
-            if(r.quantity===10)
-            {
-              console.log("refreshed");              
+          this.ps.putProductById(r.id, r).subscribe(r2 => {
+            if (r.quantity === 10) {
+              console.log("refreshed");
               this.refreshProducts();
             }
           });
         })
-      }      
+      }
 
     });
-    
-   
-  } 
-  deleteOrder(id:string)
-  {
+
+
+  }
+  deleteOrder(id: string) {
     alert("Item Deleted");
-    let orders:Array<any>;
-    this.os.getAllOrders().subscribe(r=>{
-      orders=r
+    let orders: Array<any>;
+    this.os.getAllOrders().subscribe(r => {
+      orders = r
       console.log(orders);
-      
-      orders=orders.filter(order=>{
-       if(order.item===id){
-        if((order.userType==='Admin'||order.userType==='Manager')&&(this.au.user.role==='Admin'||this.au.user.role==='Manager'))
-        {
-          return true;
-        }
-        else if(order.userType==='User'&&this.au.user.role==='User'){
-          if(order.userEmail===this.au.user.email && order.isPaid===false)
-          return true;
-          else
-          return false;
+
+      orders = orders.filter(order => {
+        if (order.item === id) {
+          if ((order.userType === 'Admin' || order.userType === 'Manager') && (this.au.user.role === 'Admin' || this.au.user.role === 'Manager')) {
+            return true;
+          }
+          else if (order.userType === 'User' && this.au.user.role === 'User') {
+            if (order.userEmail === this.au.user.email && order.isPaid === false)
+              return true;
+            else
+              return false;
+          }
+          else {
+            return false;
+          }
         }
         else
-        {
           return false;
-        }
-       }
-       else
-       return false;
       })
-      
-      if(orders.length===0)
-      {        
-        
+
+      if (orders.length === 0) {
+
       }
-      else
-      {
-        orders[0].quantity=orders[0].quantity-1;
-        if(orders[0].quantity>0)
-        {
-          this.os.putOrderById(orders[0].id,orders[0]).subscribe(r=>{});
+      else {
+        orders[0].quantity = orders[0].quantity - 1;
+        if (orders[0].quantity > 0) {
+          this.os.putOrderById(orders[0].id, orders[0]).subscribe(r => { });
         }
-        else
-        {
-          
-          this.os.deleteOrdersById(orders[0].id).subscribe(r=>{},(error)=>{});
+        else {
+
+          this.os.deleteOrdersById(orders[0].id).subscribe(r => { }, (error) => { });
         }
       }
 
       //Updating product stock
-      this.ps.getProductsById(id).subscribe(r=>{
-        
-        r.quantity+=1;
-        r.sold-=1;
-        
-        this.ps.putProductById(r.id,r).subscribe(r2=>{
-          if(r.quantity==10)
-          {
-            console.log("refreshed");            
+      this.ps.getProductsById(id).subscribe(r => {
+
+        r.quantity += 1;
+        r.sold -= 1;
+
+        this.ps.putProductById(r.id, r).subscribe(r2 => {
+          if (r.quantity == 10) {
+            console.log("refreshed");
             this.refreshProducts();
           }
         });
